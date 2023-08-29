@@ -11,15 +11,14 @@ class TestTransitionLogo:
     ) -> None:
         SellingPage(driver).click_ordering_from_header()
         page: OrderPage = OrderPage(driver)
-        page.set_name(Generator.string())
-        page.set_last_name(Generator.string())
-        page.set_address(Generator.string(5))
-        page.set_metro("Сокольники")
-        page.set_telephone(Generator.number())
-        page.next()
-        page.click_calendar()
-        page.click_today()
-        page.period_selection("сутки")
+        page.fill_info(
+            Generator.string(),
+            Generator.string(),
+            Generator.string(5),
+            "Сокольники",
+            Generator.number(),
+            "сутки",
+        )
         page.order()
         page.confirm_order()
         assert "Номер заказа" in page.order_text()
@@ -29,16 +28,15 @@ class TestTransitionLogo:
     ) -> None:
         SellingPage(driver).click_ordering()
         page: OrderPage = OrderPage(driver)
-        page.set_name(Generator.string())
-        page.set_last_name(Generator.string())
-        page.set_address(Generator.string(5))
-        page.set_metro("Черкизовская")
-        page.set_telephone(Generator.number())
-        page.next()
-        page.click_calendar()
-        page.click_today()
-        page.period_selection("двое суток")
-        page.choose_black_color()
+        page.fill_info(
+            Generator.string(),
+            Generator.string(),
+            Generator.string(5),
+            "Черкизовская",
+            Generator.number(),
+            "двое суток",
+            True,
+        )
         page.order()
         page.confirm_order()
         assert "Номер заказа" in page.order_text()

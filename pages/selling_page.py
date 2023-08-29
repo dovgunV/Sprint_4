@@ -1,8 +1,7 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from config import TIMEOUT
-from locators.general_locators import GeneralLocators
+from data import TIMEOUT
 from locators.selling_locators import SellingLocators
 from pages.general_page import GeneralPage
 
@@ -28,10 +27,10 @@ class SellingPage(GeneralPage):
         )
 
     def click_yandex_logo(self) -> None:
-        self._driver.find_element(*GeneralLocators.logo_yandex).click()
+        self._driver.find_element(*SellingLocators.logo_yandex).click()
 
     def click_ordering_from_header(self) -> None:
-        self._driver.find_element(*GeneralLocators.btn_order).click()
+        self._driver.find_element(*SellingLocators.btn_order_header).click()
 
     def click_ordering(self) -> None:
         self._scroll_to_element(

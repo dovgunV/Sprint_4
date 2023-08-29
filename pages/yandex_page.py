@@ -1,7 +1,7 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from config import TIMEOUT
+from data import TIMEOUT
 from locators.yandex_locators import YandexLocators
 from pages.general_page import GeneralPage
 

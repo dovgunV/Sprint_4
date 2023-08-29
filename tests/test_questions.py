@@ -1,7 +1,7 @@
 import pytest
 from selenium.webdriver.firefox.webdriver import WebDriver
 
-from config import ANSWERS
+from data import ANSWERS
 from pages.selling_page import SellingPage
 
 

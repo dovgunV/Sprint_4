@@ -23,7 +23,7 @@ class OrderLocators:
     input_rental_period = (By.CLASS_NAME, "Dropdown-root")
     period = (
         By.XPATH,
-        ".//div[@class='Dropdown-option' and text()= '{period}']",
+        ".//div[contains(text(), '{period}')]",
     )
     btn_order = (
         By.XPATH,

@@ -1,8 +1,8 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from config import TIMEOUT
-from locators.general_locators import GeneralLocators
+from data import TIMEOUT
+from locators.selling_locators import SellingLocators
 from locators.order_locators import OrderLocators
 from pages.general_page import GeneralPage
 
@@ -71,8 +71,30 @@ class OrderPage(GeneralPage):
     def choose_black_color(self) -> None:
         self._driver.find_element(*OrderLocators.black_color).click()
 
+    def fill_info(
+        self,
+        name: str,
+        last_name: str,
+        address: str,
+        station: str,
+        telephone: int,
+        period: str,
+        black_color: bool = False,
+    ) -> None:
+        self.set_name(name)
+        self.set_last_name(last_name)
+        self.set_address(address)
+        self.set_metro(station)
+        self.set_telephone(telephone)
+        self.next()
+        self.click_calendar()
+        self.click_today()
+        self.period_selection(period)
+        if black_color:
+            self.choose_black_color()
+
     def click_yandex_logo(self) -> None:
-        self._driver.find_element(*GeneralLocators.logo_yandex).click()
+        self._driver.find_element(*SellingLocators.logo_yandex).click()
 
     def click_scooter_logo(self) -> None:
-        self._driver.find_element(*GeneralLocators.logo_scooter).click()
+        self._driver.find_element(*SellingLocators.logo_scooter).click()
